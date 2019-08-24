@@ -1,0 +1,10 @@
+INFO:root:Verifying directory C:\Users\Max Smith\Desktop\GitHub\pyCollege\testing exists
+INFO:root:Path exists
+INFO:root:Verifying file - C:\Users\Max Smith\Desktop\GitHub\pyCollege\testing\ucd_sched.xlsx - exists
+INFO:root:File exists
+INFO:root:All files verified, moving on to file read
+INFO:root:Extracting all rows column headers from this sheet
+INFO:root:Generating statistics on sheet dimensions
+INFO:root:Rows: 8, Cols: 20
+INFO:root:Pulling class info
+INFO:root:Header Length: 20, Data Length: 20
