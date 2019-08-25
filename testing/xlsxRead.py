@@ -63,17 +63,24 @@ def class_info(sheet, row):
     for i in range(sheet.ncols):
         header.append(sheet.cell_value(0, i))
         data.append(sheet.cell_value(1, i))
-
     message = (f"Header Length: {len(header)}, Data Length: {len(data)}")
     log_and_print(message)
-
     return header, data
 
-def conv_excel_time(time):
-    # TODO, use library to convert this
-    new_time = time
-    return new_time
+def excel_to_time(time):
+    decimal_time = time * 24            # Form HH.HHH
+    return decimal_time
     
+def readable_time(time):
+    if time < 1:                        # Raw excel form, convert first
+        time = excel_to_time(time)
+    hours = int(time)
+    minutes = (time * 60) % 60
+    seconds = (time * 3600) % 60
+    text_time = ("%d:%02d.%02d" % (hours, minutes, seconds))
+    log_and_print(f"Readable time: {text_time}")
+    return(text_time)
+
 class Course(object):
     # Declare course variables
     def __init__(self, days, start_times, end_times, class_type):
@@ -105,17 +112,16 @@ def class_dict(header, data, convert_time):
             elif (i_type == "Type"):
                 class_type.append(cell_info)
 
-            # TODO Time converter for debug 
             # NOTE Excel form likely very useful for computation
             elif (i_type == "Start Time"): 
                 if convert_time:
-                    time_info = conv_excel_time(cell_info)
+                    time_info = readable_time(cell_info)
                 else:
                     time_info = cell_info
                 start_times.append(time_info)
             elif (i_type == "End Time"):
                 if convert_time:
-                    time_info = conv_excel_time(cell_info)
+                    time_info = readable_time(cell_info)
                 else:
                     time_info = cell_info
                 end_times.append(time_info)
@@ -145,9 +151,10 @@ def class_dict(header, data, convert_time):
     for i in my_class.keys():
         message = (f"Key: {i}, Value: {my_class[i]}")
         log_and_print(message)
-
     # Return class dictionary
     return my_class
+
+#=========================END FUNCTION DEFINITIONS==================================
 
 root = os.path.join("C:\\", "Users", "Max Smith", "Desktop", "GitHub", "pyCollege", "testing")
 check_directory(root)
@@ -166,6 +173,6 @@ sheet = w.sheet_by_name("pyCollege_xl")
 # extract_col(sheet)
 # row, col = sheet_stats(sheet)
 header, data = class_info(sheet, 1)
-my_class = class_dict(header, data, convert_time=False)
+my_class = class_dict(header, data, convert_time=True)
 
 
