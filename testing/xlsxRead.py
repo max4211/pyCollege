@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 '''
 Created: 24 August 2019
 Author: Max Smith
@@ -6,6 +5,9 @@ Author: Max Smith
 Goal: Create a utility to read in carefully formatted excel files
 
 '''
+
+# TODO Change file type to csv (seems more universal)
+# TODO Testing csv now
 
 import os
 from pathlib import Path
@@ -166,6 +168,4 @@ sheet = w.sheet_by_name("pyCollege_xl")
 header, data = class_info(sheet, 1)
 my_class = class_dict(header, data, convert_time=False)
 
-# TODO Create git ignore to ignore the xlsx file
-# TODO Change file type to csv (seems more universal)
-# TODO Testing csv now
+
