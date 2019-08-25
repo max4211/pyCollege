@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INFO:root:Verifying directory C:\Users\Max Smith\Desktop\GitHub\pyCollege\testing exists
 INFO:root:Path exists
 INFO:root:Verifying file - C:\Users\Max Smith\Desktop\GitHub\pyCollege\testing\ucd_sched.xlsx - exists
@@ -12,3 +13,19 @@ INFO:root:Key: days, Value: ['Tuesday', 'Wednesday', 'Thursday']
 INFO:root:Key: start_times, Value: [0.5, 0.5, 0.4583333333333333]
 INFO:root:Key: end_times, Value: [0.5347222222222222, 0.576388888888889, 0.4930555555555556]
 INFO:root:Key: class_type, Value: ['Lecture', 'Practical', 'Lecture']
+=======
+INFO:root:Verifying directory C:\Users\Max Smith\Desktop\GitHub\pyCollege\testing exists
+INFO:root:Path exists
+INFO:root:Verifying file - C:\Users\Max Smith\Desktop\GitHub\pyCollege\testing\ucd_sched.xlsx - exists
+INFO:root:File exists
+INFO:root:All files verified, moving on to file read
+INFO:root:Pulling class info
+INFO:root:Header Length: 20, Data Length: 20
+INFO:root:Key: UCD_num, Value: COMP 30080
+INFO:root:Key: course_name, Value: Computer Systems
+INFO:root:Key: Duke_num, Value: ECE 250
+INFO:root:Key: days, Value: ['Tuesday', 'Wednesday', 'Thursday']
+INFO:root:Key: start_times, Value: [0.5, 0.5, 0.4583333333333333]
+INFO:root:Key: end_times, Value: [0.5347222222222222, 0.576388888888889, 0.4930555555555556]
+INFO:root:Key: class_type, Value: ['Lecture', 'Practical', 'Lecture']
+>>>>>>> 9f9730cc10eadc06dc579a8f7d674d9fba5cfd2c
