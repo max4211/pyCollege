@@ -3,6 +3,7 @@ INFO:root:Path exists
 INFO:root:Verifying file - C:\Users\Max Smith\Desktop\GitHub\pyCollege\testing\ucd_sched.xlsx - exists
 INFO:root:File exists
 INFO:root:All files verified, moving on to file read
+INFO:root:row #: 1
 INFO:root:Pulling class info
 INFO:root:Header Length: 20, Data Length: 20
 INFO:root:Readable time: 12:00.00
@@ -18,3 +19,120 @@ INFO:root:Key: days, Value: ['Tuesday', 'Wednesday', 'Thursday']
 INFO:root:Key: start_times, Value: ['12:00.00', '12:00.00', '11:00.00']
 INFO:root:Key: end_times, Value: ['12:49.59', '13:50.00', '11:50.00']
 INFO:root:Key: class_type, Value: ['Lecture', 'Practical', 'Lecture']
+INFO:root:row #: 2
+INFO:root:Pulling class info
+INFO:root:Header Length: 20, Data Length: 20
+INFO:root:Readable time: 12:00.00
+INFO:root:Readable time: 12:49.59
+INFO:root:Readable time: 11:00.00
+INFO:root:Readable time: 11:50.00
+INFO:root:Readable time: 14:00.00
+INFO:root:Readable time: 15:49.59
+INFO:root:Key: UCD_num, Value: COMP 30080
+INFO:root:Key: course_name, Value: Computer Systems
+INFO:root:Key: Duke_num, Value: ECE 250
+INFO:root:Key: days, Value: ['Tuesday', 'Thursday', 'Friday']
+INFO:root:Key: start_times, Value: ['12:00.00', '11:00.00', '14:00.00']
+INFO:root:Key: end_times, Value: ['12:49.59', '11:50.00', '15:49.59']
+INFO:root:Key: class_type, Value: ['Lecture', 'Lecture', 'Practical']
+INFO:root:row #: 3
+INFO:root:Pulling class info
+INFO:root:Header Length: 20, Data Length: 20
+INFO:root:Readable time: 11:00.00
+INFO:root:Readable time: 11:50.00
+INFO:root:Readable time: 14:00.00
+INFO:root:Readable time: 14:50.00
+INFO:root:Readable time: 12:00.00
+INFO:root:Readable time: 12:49.59
+INFO:root:Readable time: 12:00.00
+INFO:root:Readable time: 13:50.00
+INFO:root:Key: UCD_num, Value: EEEN 30110
+INFO:root:Key: course_name, Value: Signals and Systems
+INFO:root:Key: Duke_num, Value: ECE 280
+INFO:root:Key: days, Value: ['Monday', 'Tuesday', 'Wednesday', 'Friday']
+INFO:root:Key: start_times, Value: ['11:00.00', '14:00.00', '12:00.00', '12:00.00']
+INFO:root:Key: end_times, Value: ['11:50.00', '14:50.00', '12:49.59', '13:50.00']
+INFO:root:Key: class_type, Value: ['Lecture', 'Lecture', 'Lecture', 'Lab']
+INFO:root:row #: 4
+INFO:root:Pulling class info
+INFO:root:Header Length: 20, Data Length: 20
+INFO:root:Readable time: 11:00.00
+INFO:root:Readable time: 11:50.00
+INFO:root:Readable time: 14:00.00
+INFO:root:Readable time: 14:50.00
+INFO:root:Readable time: 12:00.00
+INFO:root:Readable time: 12:49.59
+INFO:root:Readable time: 11:00.00
+INFO:root:Readable time: 12:49.59
+INFO:root:Key: UCD_num, Value: EEEN 30110
+INFO:root:Key: course_name, Value: Signals and Systems
+INFO:root:Key: Duke_num, Value: ECE 280
+INFO:root:Key: days, Value: ['Monday', 'Tuesday', 'Wednesday', 'Friday']
+INFO:root:Key: start_times, Value: ['11:00.00', '14:00.00', '12:00.00', '11:00.00']
+INFO:root:Key: end_times, Value: ['11:50.00', '14:50.00', '12:49.59', '12:49.59']
+INFO:root:Key: class_type, Value: ['Lecture', 'Lecture', 'Lecture', 'Lab']
+INFO:root:row #: 5
+INFO:root:Pulling class info
+INFO:root:Header Length: 20, Data Length: 20
+INFO:root:Readable time: 11:00.00
+INFO:root:Readable time: 11:50.00
+INFO:root:Readable time: 12:00.00
+INFO:root:Readable time: 12:49.59
+INFO:root:Readable time: 16:00.00
+INFO:root:Readable time: 17:50.59
+INFO:root:Key: UCD_num, Value: COMP 20070
+INFO:root:Key: course_name, Value: Databases
+INFO:root:Key: Duke_num, Value: CS 316
+INFO:root:Key: days, Value: ['Tuesday', 'Thursday', 'Tuesday']
+INFO:root:Key: start_times, Value: ['11:00.00', '12:00.00', '16:00.00']
+INFO:root:Key: end_times, Value: ['11:50.00', '12:49.59', '17:50.59']
+INFO:root:Key: class_type, Value: ['Lecture', 'Lecture', 'Practical']
+INFO:root:row #: 6
+INFO:root:Pulling class info
+INFO:root:Header Length: 20, Data Length: 20
+INFO:root:Readable time: 11:00.00
+INFO:root:Readable time: 11:50.00
+INFO:root:Readable time: 12:00.00
+INFO:root:Readable time: 12:49.59
+INFO:root:Readable time: 14:00.00
+INFO:root:Readable time: 15:49.59
+INFO:root:Key: UCD_num, Value: COMP 20070
+INFO:root:Key: course_name, Value: Databases
+INFO:root:Key: Duke_num, Value: CS 316
+INFO:root:Key: days, Value: ['Tuesday', 'Thursday', 'Thursday']
+INFO:root:Key: start_times, Value: ['11:00.00', '12:00.00', '14:00.00']
+INFO:root:Key: end_times, Value: ['11:50.00', '12:49.59', '15:49.59']
+INFO:root:Key: class_type, Value: ['Lecture', 'Lecture', 'Pracitcal']
+INFO:root:row #: 7
+INFO:root:Pulling class info
+INFO:root:Header Length: 20, Data Length: 20
+INFO:root:Readable time: 12:00.00
+INFO:root:Readable time: 12:49.59
+INFO:root:Readable time: 11:00.00
+INFO:root:Readable time: 11:50.00
+INFO:root:Key: UCD_num, Value: ECON 30270
+INFO:root:Key: course_name, Value: Behavioral Econ
+INFO:root:Key: Duke_num, Value: ECON 300
+INFO:root:Key: days, Value: ['Monday', 'Wednesday']
+INFO:root:Key: start_times, Value: ['12:00.00', '11:00.00']
+INFO:root:Key: end_times, Value: ['12:49.59', '11:50.00']
+INFO:root:Key: class_type, Value: ['Lecture', 'Lecture']
+INFO:root:row #: 8
+INFO:root:Pulling class info
+INFO:root:Header Length: 20, Data Length: 20
+INFO:root:Readable time: 10:00.00
+INFO:root:Readable time: 10:50.00
+INFO:root:Readable time: 15:00.00
+INFO:root:Readable time: 17:50.59
+INFO:root:Readable time: 10:00.00
+INFO:root:Readable time: 10:50.00
+INFO:root:Key: UCD_num, Value: EEEN 30090
+INFO:root:Key: course_name, Value: Electrical Machines
+INFO:root:Key: Duke_num, Value: ECE 300
+INFO:root:Key: days, Value: ['Monday', 'Monday', 'Wednesday']
+INFO:root:Key: start_times, Value: ['10:00.00', '15:00.00', '10:00.00']
+INFO:root:Key: end_times, Value: ['10:50.00', '17:50.59', '10:50.00']
+INFO:root:Key: class_type, Value: ['Lecture', 'Lab', 'Lecture']
+INFO:root:Verifying all classes are correctly implemented
+INFO:root:all_classes length: 8
+INFO:root:all_classes type: <class 'list'>

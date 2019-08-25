@@ -62,7 +62,7 @@ def class_info(sheet, row):
     # Extract info to keep
     for i in range(sheet.ncols):
         header.append(sheet.cell_value(0, i))
-        data.append(sheet.cell_value(1, i))
+        data.append(sheet.cell_value(row, i))
     message = (f"Header Length: {len(header)}, Data Length: {len(data)}")
     log_and_print(message)
     return header, data
@@ -71,7 +71,9 @@ def excel_to_time(time):
     decimal_time = time * 24            # Form HH.HHH
     return decimal_time
     
-def readable_time(time):
+def readable_time(time, military):
+    # TODO Incorporate non military time (e.g. 1:00 PM instead of 13:00)
+    # TODO Convert this time backwards to the decimal form - should be trivial
     if time < 1:                        # Raw excel form, convert first
         time = excel_to_time(time)
     hours = int(time)
@@ -93,7 +95,7 @@ class Course(object):
         if class_type is None:
             class_type = []
 
-def class_dict(header, data, convert_time):
+def class_dict(header, data, convert_time, military):
     # Initialize empty data stores to hold class information
     # TODO Should these be sets or lists?
     days, start_times, end_times, class_type = [], [], [], []
@@ -115,13 +117,13 @@ def class_dict(header, data, convert_time):
             # NOTE Excel form likely very useful for computation
             elif (i_type == "Start Time"): 
                 if convert_time:
-                    time_info = readable_time(cell_info)
+                    time_info = readable_time(cell_info, military)
                 else:
                     time_info = cell_info
                 start_times.append(time_info)
             elif (i_type == "End Time"):
                 if convert_time:
-                    time_info = readable_time(cell_info)
+                    time_info = readable_time(cell_info, military)
                 else:
                     time_info = cell_info
                 end_times.append(time_info)
@@ -172,7 +174,20 @@ sheet = w.sheet_by_name("pyCollege_xl")
 # Call actions on the sheet
 # extract_col(sheet)
 # row, col = sheet_stats(sheet)
-header, data = class_info(sheet, 1)
-my_class = class_dict(header, data, convert_time=True)
+# header, data = class_info(sheet, 1)
+# my_class = class_dict(header, data, convert_time=True, military=True)
 
+# Create a list of class dictionaries to populate tkinter window
+all_classes = []
+for k in range(sheet.nrows-1):
+    row = k + 1
+    log_and_print(f"row #: {row}")
+    header, data = class_info(sheet, row)
+    my_class = class_dict(header, data, convert_time=True, military=True)
+    all_classes.append(my_class)
+
+# Verify all_classes is correct
+log_and_print("Verifying all classes are correctly implemented")
+log_and_print(f"all_classes length: {len(all_classes)}")
+log_and_print(f"all_classes type: {type(all_classes)}")
 
