@@ -37,6 +37,14 @@ if __name__ == '__main__':
         log_and_print(f"Place window corners @ x = {x_corner} (pixels), y = {y_corner} (pixels)")
         return x_corner, y_corner
 
+    '''Input a list of times, output labels in the window'''
+    def time_labels(window, window_height, times):
+        total_labels = len(times)
+        padding = window_height/(3*(total_labels))
+        for time in times:
+            time_label = Label(window, text=int(time), bg="white", fg="black", font="none 10 bold")
+            time_label.pack(anchor=W, pady=padding)
+
     def excel_to_time(time):
         decimal_time = time * 24            # Form HH.HHH
         return decimal_time
@@ -85,6 +93,9 @@ if __name__ == '__main__':
         log_and_print(f"Military Time: {time}, Decimal Time: {decimal_time}")
         time_decimal = np.append(time_decimal, decimal_time)
 
-    print(f"Length of time_decimal: {len(time_decimal)}")
+    log_and_print(f"Length of time_decimal: {len(time_decimal)}")
+
+    # Create labels on the screen for time
+    time_labels(window, window_height, times=time_military)
 
     window.mainloop()
