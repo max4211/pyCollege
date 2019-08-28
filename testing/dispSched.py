@@ -17,8 +17,10 @@ if os.path.isfile(log_name):
     os.remove(log_name)
 logging.basicConfig(filename=log_name, level=logging.INFO)
 
-'''Weekly schedule class to display schedule options'''
+'''Weekly schedule class to display schedule options
+Current test is to try adding a single time to a display window'''
 class Schedule(Frame):
+    # Usefule link: http://effbot.org/tkinterbook/frame.htm
     def __init__(self, parent=None, picks=[], side=LEFT, anchor=W):
         Frame.__init__(self, parent)
 
@@ -38,12 +40,23 @@ if __name__ == '__main__':
         return x_corner, y_corner
 
     '''Input a list of times, output labels in the window'''
-    def time_labels(window, window_height, times):
+    def time_labels(pane, window_height, times):
+        # Place labels in a pane
         total_labels = len(times)
         padding = window_height/(3*(total_labels))
         for time in times:
-            time_label = Label(window, text=int(time), bg="white", fg="black", font="none 10 bold")
-            time_label.pack(anchor=W, pady=padding)
+            time_label = Label(pane, text=int(time), bg="white", fg="black", font="none 10 bold")
+            # time_label.pack(anchor=W, pady=padding)
+            time_label.pack(anchor=W, pady=padding, expand=False)
+
+    '''Enter class information, output a display on the window'''
+    def class_slot(window, start_time, end_time, title):
+        log_and_print(f"Attempting to create a class slot in window")
+        # Create label with appropriate labels and coloring
+        class_box = Label(window, text=title, bg="blue", fg="white", font="none 10")
+        # Configure label appropriately in the screen
+        # NOTE Frames may make this process MUCH easier
+        class_box.pack(side=TOP)
 
     def excel_to_time(time):
         decimal_time = time * 24            # Form HH.HHH
@@ -78,14 +91,18 @@ if __name__ == '__main__':
     x_corner, y_corner = window_geometry(window, window_width, window_height)
     window.geometry(f"{window_width}x{window_height}+{x_corner}+{y_corner}")
 
+    # Create a top frame to fill in
+    top_frame = Frame(window, width=window_width, height=window_height)
+    top_frame.pack(side=TOP, fill=X, expand=True, anchor=N)
+
     # Create header for each day of the week
     week_days = ["Monday", "Tuesday", "Wedesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    header = Label(window, text=week_days[0], bg="white", fg="black", font="none 12 bold")
+    header = Label(top_frame, text=week_days[0], bg="white", fg="black", font="none 12 bold")
     header.pack()
 
     # Create time axis scale (every hour?)
     start_time, stop_time = 8, 17
-    num_points = stop_time-start_time+1
+    num_points = stop_time - start_time + 1
     time_military = np.linspace(start_time, stop_time, num_points)
     time_decimal = []
     for time in time_military:
@@ -95,7 +112,20 @@ if __name__ == '__main__':
 
     log_and_print(f"Length of time_decimal: {len(time_decimal)}")
 
-    # Create labels on the screen for time
-    time_labels(window, window_height, times=time_military)
+    # Create labels on a pane in the windows
+    # pane = Frame(window)
+    # pane.pack(fill = NONE, expand = False)
+    time_frame_width = 20
+    time_frame = Frame(top_frame, width=time_frame_width, height=window_height, background="black")
+    time_frame.pack(side=LEFT, anchor=W)
+    time_labels(time_frame, window_height, times=time_military)
+
+    # Add a single course time to the day
+    start_time = 0.34
+    end_time = 0.375
+    message = "COMP 30080 (8 AM - 9 AM)"
+    class_frame = Frame(top_frame, width=window_width-time_frame_width, height=window_height, background="light blue")
+    class_frame.pack(side=LEFT, anchor=W)
+    # class_slot(window, start_time, end_time, message)
 
     window.mainloop()

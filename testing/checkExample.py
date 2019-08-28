@@ -60,5 +60,6 @@ if __name__ == '__main__':
         printresults("Options", list(tgl.state()), tgl.picks) 
 
     Button(root, text='Quit', command=root.quit).pack(side=RIGHT)
+    # TODO Change peek from a submit esque function to a queue that places info when states change
     Button(root, text='Peek', command=allstates).pack(side=RIGHT)
     root.mainloop()
