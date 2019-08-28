@@ -1,0 +1,11 @@
+'''
+Created: 28 August 2019
+Author: Max Smith
+Goal: Create a display to view class scheulde
+'''
+
+
+'''Weekly schedule class to display schedule options'''
+class Schedule(Frame):
+    
+    pass

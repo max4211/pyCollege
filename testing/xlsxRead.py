@@ -70,15 +70,14 @@ def excel_to_time(time):
     
 def readable_time(time, military):
     # TODO Incorporate non military time (e.g. 1:00 PM instead of 13:00)
-    # TODO Convert this time backwards to the decimal form - should be trivial
     if time < 1:                        # Raw excel form, convert first
         time = excel_to_time(time)
     hours = int(time)
     minutes = (time * 60) % 60
     seconds = (time * 3600) % 60
     text_time = ("%d:%02d.%02d" % (hours, minutes, seconds))
-    log_and_print(f"Readable time: {text_time}")
-    return(text_time)
+    print(f"Readable time: {text_time}")
+    return(text_time, hours, minutes, seconds)
 
 class Course(object):
     # Declare course variables
@@ -114,13 +113,13 @@ def class_dict(header, data, convert_time, military):
             # NOTE Excel form likely very useful for computation
             elif (i_type == "Start Time"): 
                 if convert_time:
-                    time_info = readable_time(cell_info, military)
+                    time_info, hours, minutes, seconds = readable_time(cell_info, military)
                 else:
                     time_info = cell_info
                 start_times.append(time_info)
             elif (i_type == "End Time"):
                 if convert_time:
-                    time_info = readable_time(cell_info, military)
+                    time_info, hours, minutes, seconds = readable_time(cell_info, military)
                 else:
                     time_info = cell_info
                 end_times.append(time_info)
