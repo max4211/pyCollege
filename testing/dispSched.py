@@ -3,6 +3,7 @@ Created: 28 August 2019
 Author: Max Smith
 Goal: Create a display to view class scheulde
 Notes: Starting off with a single day to display, then will try to repeat the frame n times
+TODO: Figure out more information on tkinter and frames, this debugging cycle is painful
 '''
 
 from tkinter import *
@@ -48,15 +49,6 @@ if __name__ == '__main__':
             time_label = Label(pane, text=int(time), bg="white", fg="black", font="none 10 bold")
             # time_label.pack(anchor=W, pady=padding)
             time_label.pack(anchor=W, pady=padding, expand=False)
-
-    '''Enter class information, output a display on the window'''
-    def class_slot(window, start_time, end_time, title):
-        log_and_print(f"Attempting to create a class slot in window")
-        # Create label with appropriate labels and coloring
-        class_box = Label(window, text=title, bg="blue", fg="white", font="none 10")
-        # Configure label appropriately in the screen
-        # NOTE Frames may make this process MUCH easier
-        class_box.pack(side=TOP)
 
     def excel_to_time(time):
         decimal_time = time * 24            # Form HH.HHH
@@ -124,8 +116,12 @@ if __name__ == '__main__':
     start_time = 0.34
     end_time = 0.375
     message = "COMP 30080 (8 AM - 9 AM)"
+    # Create frame for all classes on Monday
     class_frame = Frame(top_frame, width=window_width-time_frame_width, height=window_height, background="light blue")
     class_frame.pack(side=LEFT, anchor=W)
-    # class_slot(window, start_time, end_time, message)
+    # Create a single label for one class in the class frame
+    single_class_label = Label(class_frame, text=message, bg="orange", fg="white", font="none 10")
+    single_class_label.pack(anchor=E)
 
+    # Run the mainloop
     window.mainloop()
