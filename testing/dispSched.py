@@ -6,6 +6,16 @@ Notes: Starting off with a single day to display, then will try to repeat the fr
 '''
 
 from tkinter import *
+# import tkinter as tk      # How to do tk.update to get window size
+import numpy as np
+import logging
+import os
+
+log_name = "dispSched.log"
+# Clear logger each time
+if os.path.isfile(log_name):
+    os.remove(log_name)
+logging.basicConfig(filename=log_name, level=logging.INFO)
 
 '''Weekly schedule class to display schedule options'''
 class Schedule(Frame):
@@ -13,8 +23,19 @@ class Schedule(Frame):
         Frame.__init__(self, parent)
 
 if __name__ == '__main__':
-    def screen_dimensions(width, height):
-        print(f"Screen Dimensions:\nWidth: {width} (pixels), Height: {height} (pixels)")
+    def log_and_print(message):
+        logging.info(message)
+        print(message)
+    
+    def window_geometry(window, window_width, window_height):
+        screen_width = window.winfo_screenwidth()
+        screen_height = window.winfo_screenheight()
+        log_and_print(f"Screen Dimensions - Width: {screen_width} (pixels), Height: {screen_height} (pixels)")
+        log_and_print(f"Desired Window Dimensions -  Width: {window_width} (pixels), Height: {window_height} (pixels)")
+        x_corner = int((screen_width/2) - (window_width/2))
+        y_corner = int((screen_height/2) - (window_height/2))
+        log_and_print(f"Place window corners @ x = {x_corner} (pixels), y = {y_corner} (pixels)")
+        return x_corner, y_corner
 
     def excel_to_time(time):
         decimal_time = time * 24            # Form HH.HHH
@@ -32,30 +53,22 @@ if __name__ == '__main__':
         return(text_time, hours, minutes, seconds)
 
     '''Assumed time format: decimal less than one'''
-    def time_to_decimal(hour, minutes):
+    def time_to_decimal(hours, minutes, seconds):
         # TODO Incorporate non military (change to military from PM)
         # NOTE For now - just asssumed to always be military
         # (e.g., 12:00 --> 0.5)
-        
-
-
-        pass
-
-
+        return hours/24 + minutes/60 + seconds/3600
     
     # TODO Configure window here
     window = Tk()
 
-    # Get screen width and height to open in center of screen
-    screen_width = window.winfo_screenwidth()
-    screen_height = window.winfo_screenheight()
-    screen_dimensions(screen_width, screen_height)
-
     # Configure root here
     window.title("Weekly Schedule")
     window.configure(background="light gray")
-    # TODO Verify this is where we want the window
-    window.geometry(f"400x500+{int(screen_width/4)}+{int(screen_height/4)}")
+    # Get screen width and height to open in center of screen
+    window_width, window_height = 300, 700
+    x_corner, y_corner = window_geometry(window, window_width, window_height)
+    window.geometry(f"{window_width}x{window_height}+{x_corner}+{y_corner}")
 
     # Create header for each day of the week
     week_days = ["Monday", "Tuesday", "Wedesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -63,6 +76,15 @@ if __name__ == '__main__':
     header.pack()
 
     # Create time axis scale (every hour?)
+    start_time, stop_time = 8, 17
+    num_points = stop_time-start_time+1
+    time_military = np.linspace(start_time, stop_time, num_points)
+    time_decimal = []
+    for time in time_military:
+        decimal_time = time_to_decimal(hours=time, minutes=0, seconds=0)
+        log_and_print(f"Military Time: {time}, Decimal Time: {decimal_time}")
+        time_decimal = np.append(time_decimal, decimal_time)
 
+    print(f"Length of time_decimal: {len(time_decimal)}")
 
     window.mainloop()
