@@ -1,3 +1,6 @@
-INFO:root:course_info: COMP 30080
-INFO:root:course_info: EEEN 30110
-INFO:root:course_info: ECON 30270
+INFO:root:Adding button with label: COMP 30080
+INFO:root:Adding button with label: EEEN 30110
+INFO:root:Adding button with label: ECON 30270
+INFO:root:State of COMP 30080(0) is 0
+INFO:root:State of EEEN 30110(1) is 0
+INFO:root:State of ECON 30270(2) is 0
